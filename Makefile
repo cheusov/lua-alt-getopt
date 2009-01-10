@@ -5,7 +5,7 @@ LUAMODDIR?=${PREFIX}/lib/lua/${LUAVER}
 ##################################################
 
 VERSION=		0.0.0
-
+PROJECTNAME=		lua_alt_getopt
 BIRTHDATE=		2009-01-10
 
 FILES=			alt_getopt.lua
