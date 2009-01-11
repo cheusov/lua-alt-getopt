@@ -3,7 +3,7 @@
 runtest (){
     printf '=================================================================\n'
     printf '======= args: %s\n' "$*"
-    "$@" 2>&1
+    "$@" 2>&1 | awk '/stack traceback:/, /\[C\]: [?]/ {next} {print}'
 }
 
 do_test_getopt (){

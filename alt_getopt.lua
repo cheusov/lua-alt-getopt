@@ -40,9 +40,8 @@ local function convert_short2long (opts)
 end
 
 local function err_unknown_opt (opt)
-   io.stderr:write ("Unknown option `-" ..
-		    (#opt > 1 and "-" or "") .. opt .. "'\n")
-   os.exit (1)
+   error ("Unknown option `-" ..
+		    (#opt > 1 and "-" or "") .. opt .. "'\n", 0)
 end
 
 local function canonize (options, opt)
@@ -91,8 +90,7 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	    opt = canonize (options, opt)
 
 	    if options [opt] == 0 then
-	       io.stderr:write ("Bad usage of option `" .. a .. "'\n")
-	       os.exit (1)
+	       error ("Bad usage of option `" .. a .. "'\n", 0)
 	    end
 
 	    optarg [count] = a:sub (pos+1)
@@ -106,8 +104,7 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	       opts [count] = opt
 	    else
 	       if i == #arg then
-		  io.stderr:write ("Missed value for option `" .. a .. "'\n")
-		  os.exit (1)
+		  error ("Missed value for option `" .. a .. "'\n", 0)
 	       end
 
 	       optarg [count] = arg [i+1]
@@ -126,8 +123,7 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	       opts [count] = opt
 	    elseif a:len () == 2 then
 	       if i == #arg then
-		  io.stderr:write ("Missed value for option `" .. a .. "'\n")
-		  os.exit (1)
+		  error ("Missed value for option `" .. a .. "'\n", 0)
 	       end
 
 	       optarg [count] = arg [i+1]
@@ -141,8 +137,7 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	       count = count + 1
 	       break
 	    else
-	       io.stderr:write ("Bad usage of option `-" .. opt .. "'\n")
-	       os.exit (1)
+	       error ("Bad usage of option `-" .. opt .. "'\n", 0)
 	    end
 	    count = count + 1
 	 end

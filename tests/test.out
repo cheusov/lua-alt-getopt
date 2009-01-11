@@ -71,7 +71,8 @@ ARGV [5] = -2
 ARGV [6] = -3
 =================================================================
 ======= args: ../alt_getopt -1 -2 -3
-Unknown option `-1'
+lua: Unknown option `-1'
+
 =================================================================
 ======= args: ../alt_getopt -hvV
 option `h'
@@ -82,13 +83,16 @@ fin-option `V': 1
 fin-option `v': 1
 =================================================================
 ======= args: ../alt_getopt -ho 123
-Bad usage of option `-o'
+lua: Bad usage of option `-o'
+
 =================================================================
 ======= args: ../alt_getopt -hoV 123
-Bad usage of option `-o'
+lua: Bad usage of option `-o'
+
 =================================================================
 ======= args: ../alt_getopt --unknown
-Unknown option `--unknown'
+lua: Unknown option `--unknown'
+
 =================================================================
 ======= args: ../alt_getopt --output=file.out -nNNN --len=LENGTH
 option `o': file.out
@@ -103,13 +107,17 @@ option `o': --file--
 fin-option `o': --file--
 =================================================================
 ======= args: ../alt_getopt --output
-Missed value for option `--output'
+lua: Missed value for option `--output'
+
 =================================================================
 ======= args: ../alt_getopt -ho
-Bad usage of option `-o'
+lua: Bad usage of option `-o'
+
 =================================================================
 ======= args: ../alt_getopt --help -o
-Missed value for option `-o'
+lua: Missed value for option `-o'
+
 =================================================================
 ======= args: ../alt_getopt --help=value
-Bad usage of option `--help=value'
+lua: Bad usage of option `--help=value'
+
