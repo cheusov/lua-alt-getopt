@@ -21,7 +21,7 @@
 
 module ("alt_getopt", package.seeall)
 
-function __convert_short2long (opts)
+local function convert_short2long (opts)
    local i = 1
    local len = #opts
    local ret = {}
@@ -39,22 +39,22 @@ function __convert_short2long (opts)
    return ret
 end
 
-function __err_unknown_opt (opt)
+local function err_unknown_opt (opt)
    io.stderr:write ("Unknown option `-" ..
 		    (#opt > 1 and "-" or "") .. opt .. "'\n")
    os.exit (1)
 end
 
-function __canonize (__options, opt)
-   if not __options [opt] then
-      __err_unknown_opt (opt)
+local function canonize (options, opt)
+   if not options [opt] then
+      err_unknown_opt (opt)
    end
 
-   while type (__options [opt]) == "string" do
-      opt = __options [opt]
+   while type (options [opt]) == "string" do
+      opt = options [opt]
 
-      if not __options [opt] then
-	 __err_unknown_opt (opt)
+      if not options [opt] then
+	 err_unknown_opt (opt)
       end
    end
 
@@ -67,9 +67,9 @@ function get_ordered_opts (arg, sh_opts, long_opts)
    local opts   = {}
    local optarg = {}
 
-   local __options = __convert_short2long (sh_opts)
+   local options = convert_short2long (sh_opts)
    for k,v in pairs (long_opts) do
-      __options [k] = v
+      options [k] = v
    end
 
    while i <= #arg do
@@ -88,9 +88,9 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	 if pos then
 	    local opt = a:sub (3, pos-1)
 
-	    opt = __canonize (__options, opt)
+	    opt = canonize (options, opt)
 
-	    if __options [opt] == 0 then
+	    if options [opt] == 0 then
 	       io.stderr:write ("Bad usage of option `" .. a .. "'\n")
 	       os.exit (1)
 	    end
@@ -100,9 +100,9 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	 else
 	    local opt = a:sub (3)
 
-	    opt = __canonize (__options, opt)
+	    opt = canonize (options, opt)
 
-	    if __options [opt] == 0 then
+	    if options [opt] == 0 then
 	       opts [count] = opt
 	    else
 	       if i == #arg then
@@ -120,9 +120,9 @@ function get_ordered_opts (arg, sh_opts, long_opts)
       elseif a:sub (1, 1) == "-" then
 	 local j
 	 for j=2,a:len () do
-	    local opt = __canonize (__options, a:sub (j, j))
+	    local opt = canonize (options, a:sub (j, j))
 
-	    if __options [opt] == 0 then
+	    if options [opt] == 0 then
 	       opts [count] = opt
 	    elseif a:len () == 2 then
 	       if i == #arg then
