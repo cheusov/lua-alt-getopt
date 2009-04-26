@@ -19,21 +19,17 @@
 -- OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 -- WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-module ("alt_getopt", package.seeall)
+local error, type, pairs, ipairs = error, type, pairs, ipairs
+
+module ("alt_getopt")
 
 local function convert_short2long (opts)
    local i = 1
    local len = #opts
    local ret = {}
 
-   while i <= len do
-      if opts:sub (i+1, i+1) == ":" then
-	 ret [opts:sub (i, i)] = 1
-      else
-	 ret [opts:sub (i, i)] = 0
-      end
-
-      i = i + 1
+   for short_opt, accept_arg in opts:gmatch("(%w)(:?)") do
+      ret[short_opt]=#accept_arg
    end
 
    return ret
@@ -152,12 +148,9 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 end
 
 function get_opts (arg, sh_opts, long_opts)
-   local opts
-   local i
-   local optarg
    local ret = {}
 
-   opts,optind,optarg = alt_getopt.get_ordered_opts (arg, sh_opts, long_opts)
+   local opts,optind,optarg = get_ordered_opts (arg, sh_opts, long_opts)
    for i,v in ipairs (opts) do
       if optarg [i] then
 	 ret [v] = optarg [i]
