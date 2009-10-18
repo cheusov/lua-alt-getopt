@@ -126,3 +126,11 @@ lua: Missed value for option `-o'
 ======= args: ../alt_getopt --help=value
 lua: Bad usage of option `--help=value'
 
+=================================================================
+======= args: ../alt_getopt -ofile1 --set_value 111 --output file2 --set-output=file3
+option `o': file1
+option `S': 111
+option `o': file2
+option `o': file3
+fin-option `o': file3
+fin-option `S': 111

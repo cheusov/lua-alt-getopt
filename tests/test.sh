@@ -27,6 +27,8 @@ do_test_getopt (){
     runtest ../alt_getopt -ho
     runtest ../alt_getopt --help -o
     runtest ../alt_getopt --help=value
+    runtest ../alt_getopt -ofile1 --set_value 111 --output file2 \
+	--set-output=file3
 
     true
 }
