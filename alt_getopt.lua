@@ -19,7 +19,7 @@
 -- OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 -- WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-local error, type, pairs, ipairs = error, type, pairs, ipairs
+local type, pairs, ipairs, io, os = type, pairs, ipairs, io, os
 
 module ("alt_getopt")
 
@@ -35,9 +35,14 @@ local function convert_short2long (opts)
    return ret
 end
 
+local function exit_with_error (msg, exit_status)
+   io.stderr:write (msg)
+   os.exit (exit_status)
+end
+
 local function err_unknown_opt (opt)
-   error ("Unknown option `-" ..
-		    (#opt > 1 and "-" or "") .. opt .. "'\n", 0)
+   exit_with_error ("Unknown option `-" ..
+		    (#opt > 1 and "-" or "") .. opt .. "'\n", 1)
 end
 
 local function canonize (options, opt)
@@ -86,7 +91,7 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	    opt = canonize (options, opt)
 
 	    if options [opt] == 0 then
-	       error ("Bad usage of option `" .. a .. "'\n", 0)
+	       exit_with_error ("Bad usage of option `" .. a .. "'\n", 1)
 	    end
 
 	    optarg [count] = a:sub (pos+1)
@@ -100,7 +105,7 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	       opts [count] = opt
 	    else
 	       if i == #arg then
-		  error ("Missed value for option `" .. a .. "'\n", 0)
+		  exit_with_error ("Missed value for option `" .. a .. "'\n", 1)
 	       end
 
 	       optarg [count] = arg [i+1]
@@ -120,7 +125,7 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	       count = count + 1
 	    elseif a:len () == j then
 	       if i == #arg then
-		  error ("Missed value for option `-" .. opt .. "'\n", 0)
+		  exit_with_error ("Missed value for option `-" .. opt .. "'\n", 1)
 	       end
 
 	       optarg [count] = arg [i+1]
