@@ -83,12 +83,17 @@ fin-option `V': 1
 fin-option `v': 1
 =================================================================
 ======= args: ../alt_getopt -ho 123
-lua: Bad usage of option `-o'
-
+option `h'
+option `o': 123
+fin-option `o': 123
+fin-option `h': 1
 =================================================================
 ======= args: ../alt_getopt -hoV 123
-lua: Bad usage of option `-o'
-
+option `h'
+option `o': V
+fin-option `o': V
+fin-option `h': 1
+ARGV [2] = 123
 =================================================================
 ======= args: ../alt_getopt --unknown
 lua: Unknown option `--unknown'
@@ -111,7 +116,7 @@ lua: Missed value for option `--output'
 
 =================================================================
 ======= args: ../alt_getopt -ho
-lua: Bad usage of option `-o'
+lua: Missed value for option `-o'
 
 =================================================================
 ======= args: ../alt_getopt --help -o

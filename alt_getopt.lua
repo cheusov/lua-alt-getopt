@@ -117,9 +117,10 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 
 	    if options [opt] == 0 then
 	       opts [count] = opt
-	    elseif a:len () == 2 then
+	       count = count + 1
+	    elseif a:len () == j then
 	       if i == #arg then
-		  error ("Missed value for option `" .. a .. "'\n", 0)
+		  error ("Missed value for option `-" .. opt .. "'\n", 0)
 	       end
 
 	       optarg [count] = arg [i+1]
@@ -127,15 +128,12 @@ function get_ordered_opts (arg, sh_opts, long_opts)
 	       i = i + 1
 	       count = count + 1
 	       break
-	    elseif j == 2 then
-	       optarg [count] = a:sub (3)
+	    else
+	       optarg [count] = a:sub (j+1)
 	       opts [count] = opt
 	       count = count + 1
 	       break
-	    else
-	       error ("Bad usage of option `-" .. opt .. "'\n", 0)
 	    end
-	    count = count + 1
 	 end
       else
 	 break
