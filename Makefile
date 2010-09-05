@@ -1,23 +1,12 @@
-PREFIX?=/usr/local
-LUAVER?=5.1
-LUAMODDIR?=${PREFIX}/lib/lua/${LUAVER}
-
 ##################################################
 
 VERSION=		0.7.0
 PROJECTNAME=		lua-alt-getopt
 BIRTHDATE=		2009-01-10
 
-FILES=			alt_getopt.lua
-FILESDIR=		${LUAMODDIR}
-
-INST_DIR?=		${INSTALL} -d
+LUA_LMODULES=		alt_getopt.lua
 
 ##################################################
-.PHONY: install-dirs
-install-dirs:
-	$(INST_DIR) ${DESTDIR}${LUAMODDIR}
-
 .PHONY: test
 test:
 	@echo 'running tests...'; \
@@ -28,4 +17,4 @@ test:
 	else echo '   failed'; false; \
 	fi
 
-.include <bsd.prog.mk>
+.include <mkc.files.mk>
