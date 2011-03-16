@@ -6,6 +6,8 @@ BIRTHDATE=		2009-01-10
 
 LUA_LMODULES=		alt_getopt.lua
 
+MKC_REQD=		0.20.0
+
 ##################################################
 .PHONY: test
 test:
