@@ -24,8 +24,6 @@ local type, pairs, ipairs, io, os = type, pairs, ipairs, io, os
 alt_getopt = {}
 
 local function convert_short2long (opts)
-   local i = 1
-   local len = #opts
    local ret = {}
 
    for short_opt, accept_arg in opts:gmatch("(%w)(:?)") do
@@ -116,7 +114,7 @@ function alt_getopt.get_ordered_opts (arg, sh_opts, long_opts)
 	 count = count + 1
 
       elseif a:sub (1, 1) == "-" then
-	 local j
+
 	 for j=2,a:len () do
 	    local opt = canonize (options, a:sub (j, j))
 

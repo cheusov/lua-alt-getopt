@@ -12,7 +12,7 @@ local long_opts = {
    ["set-output"] = "o"
 }
 
-local ret
+local opts
 local optarg
 local optind
 opts,optind,optarg = alt_getopt.get_ordered_opts (arg, "hVvo:n:S:", long_opts)
