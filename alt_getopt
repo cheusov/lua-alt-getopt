@@ -25,9 +25,12 @@ for i,v in ipairs (opts) do
 end
 
 optarg,optind = alt_getopt.get_opts (arg, "hVvo:n:S:", long_opts)
+local fin_options = {}
 for k,v in pairs (optarg) do
-   io.write ("fin-option `" .. k .. "': " .. v .. "\n")
+   table.insert (fin_options, "fin-option `" .. k .. "': " .. v .. "\n")
 end
+table.sort (fin_options)
+io.write (table.concat (fin_options))
 
 for i = optind,#arg do
    io.write (string.format ("ARGV [%s] = %s\n", i, arg [i]))
