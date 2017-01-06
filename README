@@ -30,7 +30,7 @@ NetBSD make is preferred because NetBSD is my development platform.
 
 If 'make test' fails on your platform/Lua, please let me know.
 If you find a a bug, register it here
-http://luaforge.net/project/lua_altgetopt
+https://github.com/cheusov/lua-alt-getopt/issues
 or send me bugreport directly.
 
 Author: Aleksey Cheusov <vle@gmx.net>
