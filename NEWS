@@ -1,4 +1,11 @@
 ======================================================================
+Version 0.8.0, by Peter Melnichenko, Fri, 06 Jan 2017 13:49:49 +0300
+
+  FIX: alt_getopt no longer uses 'module()'.
+
+  alt_getopt now supports Lua 5.3.
+
+======================================================================
 Version 0.7.0, by Aleksey Cheusov, Sun, 18 Oct 2009 14:17:28 +0300
 
   FIX: POSIX getopt("xo:") accepts './app -xoVVV' and './app -xo VVV'

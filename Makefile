@@ -1,6 +1,6 @@
 ##################################################
 
-VERSION=		0.7.0
+VERSION=		0.8.0
 PROJECTNAME=		lua-alt-getopt
 BIRTHDATE=		2009-01-10
 
