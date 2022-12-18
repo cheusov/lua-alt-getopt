@@ -1,0 +1,68 @@
+=head1 Description
+
+lua_altgetopt is a MIT-licenced module for Lua programming language
+for processing application's arguments the same way
+POSIX getopt(3) and BSD/Solaris getopt_long(3) functions do.
+
+=head1 Features
+
+Main features and goals:
+
+=over 6
+
+=item *
+
+Compatibility with POSIX, that is, SUS "Utility Syntax Guidelines"
+guidelines 3-12
+L<http://www.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap12.html#tag_12_02>
+
+=item *
+
+This module is written in plain Lua
+
+=item *
+
+No extra dependencies
+
+=item *
+
+No hooks, no functional tricks ;-)
+
+=item *
+
+Support for long options, e.g. compatibility with getopt_long(3) C function
+present in *BSD and Solaris operating systems
+
+=item *
+
+Strict error checking, i.e., checks for an incorrect use of options
+
+=item *
+
+Unlike GNU getopt(3) and getopt_long(3) lua_altgetopt does not permute the contents
+of argv as it scans. This means lua_altgetopt strictly conforms to POSIX rules
+of options parsing
+
+=item *
+
+Two ways of options handling are provided.
+See alt_getopt.get_ordered_opts and alt_getopt.get_opts functions
+
+=back
+
+=head1 Installation:
+
+install mk-configure on your system, then run the following commands
+
+      # mkcmake all
+      # mkcmake test
+      # mkcmake install
+
+=head1 Bug reports
+
+Please report bugs here
+L<https://github.com/cheusov/lua-alt-getopt/issues>
+
+=head1 Author
+
+Aleksey Cheusov <vle@gmx.net>
