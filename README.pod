@@ -29,6 +29,15 @@ of options parsing. GNU getopt(3) and getopt_long(3) are buggy!
 
 =item *
 
+Strict error checking, i.e., checks for an incorrect use of options.
+
+=item *
+
+Two ways of options handling are provided.
+See alt_getopt.get_ordered_opts and alt_getopt.get_opts functions.
+
+=item *
+
 This module is written in plain Lua.
 
 =item *
@@ -38,15 +47,6 @@ No extra dependencies.
 =item *
 
 No hooks, no functional tricks ;-)
-
-=item *
-
-Strict error checking, i.e., checks for an incorrect use of options.
-
-=item *
-
-Two ways of options handling are provided.
-See alt_getopt.get_ordered_opts and alt_getopt.get_opts functions.
 
 =back
 
