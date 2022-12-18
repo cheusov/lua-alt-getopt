@@ -1,10 +1,10 @@
-=head1 Description
+=head3 Description
 
 lua_altgetopt is a MIT-licenced module for Lua programming language
 for processing application's arguments the same way
 POSIX getopt(3) and BSD/Solaris getopt_long(3) functions do.
 
-=head1 Features
+=head3 Features
 
 Main features and goals:
 
@@ -50,7 +50,7 @@ No hooks, no functional tricks ;-)
 
 =back
 
-=head1 Installation:
+=head3 Installation:
 
 install mk-configure on your system, then run the following commands.
 
@@ -58,11 +58,11 @@ install mk-configure on your system, then run the following commands.
       # mkcmake test
       # mkcmake install
 
-=head1 Bug reports
+=head3 Bug reports
 
 Please report bugs here
 L<https://github.com/cheusov/lua-alt-getopt/issues>
 
-=head1 Author
+=head3 Author
 
 Aleksey Cheusov <vle@gmx.net>
